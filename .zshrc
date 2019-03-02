@@ -114,14 +114,14 @@ source $ZSH/oh-my-zsh.sh
 #Enable menu select
 zstyle ':completion:*' menu select
 
-#Enable tree view for kill completion
+# Enable tree view for kill completion
 zstyle ':completion:*:*:kill:*:processes' command 'ps --forest -e -o pid,user,tty,cmd'
 
 #Docker-compose autocomplete para o Zsh
 fpath=(~/.zsh/completion $fpath)
 autoload -Uz compinit && compinit -i
 
-#Bruno - keychain - enable and manage ssh-agent
+# Bruno - keychain - enable and manage ssh-agent
 eval $(keychain --eval --quiet)
 
 #GPG Key
@@ -129,3 +129,5 @@ export GPG_TTY=$(tty)
 
 #Bruno - Keep "LESS" content on screen when exit
 export LESS="-XFR"
+
+. /home/bruno/Apps/z/z.sh
