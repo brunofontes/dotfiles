@@ -1,8 +1,14 @@
 dotdir=~/dotfiles
+
 source $dotdir/.alias
 source $dotdir/.functions
-source $dotdir/.only_laptop
-source $dotdir/.only_michelli
+thisPC=`hostname`
+if [ $thisPC = "inspiron-1525" ]
+then
+    source $dotdir/.only_laptop
+else
+    source $dotdir/.only_michelli
+fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -70,7 +76,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git gitfast git-flow gitignore sudo docker composer autojump gnu-utils gpg-agent homestead laravel man ufw vagrant vim vim-interaction vscode
+  git sudo docker composer autojump gnu-utils gpg-agent homestead laravel ufw vagrant vi-mode 
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -123,9 +129,3 @@ export GPG_TTY=$(tty)
 
 #Bruno - Keep "LESS" content on screen when exit
 export LESS="-XFR"
-
-#Bruno - Gnome keyring
-if [ -n "$DESKTOP_SESSION" ];then
-    eval $(gnome-keyring-daemon --start)
-    export SSH_AUTH_SOCK
-fi
