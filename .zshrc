@@ -76,7 +76,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git sudo docker composer autojump gnu-utils gpg-agent homestead laravel ufw vagrant vi-mode 
+  git gitfast sudo docker composer gnu-utils gpg-agent homestead laravel ufw vagrant z
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -123,6 +123,7 @@ autoload -Uz compinit && compinit -i
 
 # Bruno - keychain - enable and manage ssh-agent
 eval $(keychain --eval --quiet)
+export SSH_ASKPASS=ksshaskpass
 
 #GPG Key
 export GPG_TTY=$(tty)
