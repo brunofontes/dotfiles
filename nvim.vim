@@ -70,6 +70,32 @@ augroup END
     vmap <C-_> gc
     nmap <C-_> gcc
 
+    " Searching / Replacing on all files
+    " Needs to install fzf on filesystem first
+    Plug 'junegunn/fzf', {'dir': '~/.fzf'}
+    Plug 'junegunn/fzf.vim'
+    nnoremap <leader>s :Rg<space>
+    map <A-O> :Tags<CR>
+
+    " Search occurrences into multiple files (combined with fzf)
+    " Needs to install ripgrep on filesystem first
+    Plug 'BurntSushi/ripgrep'
+    nnoremap <C-F> :Rg<space>
+    nnoremap <leader>A :exec "Rg ".expand("<cword>")<cr>
+    autocmd VimEnter * command! -nargs=* Rg
+      \ call fzf#vim#grep(
+      \   'rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1,
+      \   <bang>0 ? fzf#vim#with_preview('up:60%')
+      \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+      \   <bang>0)
+
+
+    "Replace on multiple files
+    "<leader>a  = Search
+    "<leader>r  = Replace into the searched results
+    Plug 'wincent/ferret' 
+
+
     call plug#end()
 
 
