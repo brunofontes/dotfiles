@@ -6,6 +6,8 @@
     imap jk <Esc>
     map <C-b> :NERDTreeToggle<CR>
     map <C-A-s> :Startify<CR>
+    nmap <C-L> A;<esc>
+    imap <C-L> <esc>A;
     set number
     set relativenumber
     colorscheme ron
@@ -96,6 +98,10 @@ augroup END
     Plug 'wincent/ferret' 
 
 
+    "Neomake - finds errors on your code
+    Plug 'neomake/neomake'
+
+
     call plug#end()
 
 
@@ -118,3 +124,7 @@ augroup END
     " before installing the plugin
     let g:php_cs_fixer_php_path = "/usr/bin/php"
     autocmd BufWritePost *.php silent! call PhpCsFixerFixFile()
+
+"BEGIN Neomake
+	" When writing a buffer (no delay), and on normal mode changes (after 750ms).
+	call neomake#configure#automake('nw', 750)
