@@ -132,3 +132,5 @@ export GPG_TTY=$(tty)
 export LESS="-XFR"
 
 . /home/bruno/Apps/z/z.sh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -31,3 +31,5 @@ export SSH_ASKPASS=ksshaskpass
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
 	exec startx
 fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
