@@ -18,6 +18,7 @@
 augroup myvimrchooks
     au!
     autocmd bufwritepost init.vim source ~/.config/nvim/init.vim
+    autocmd bufwritepost nvim.vim source ~/.config/nvim/init.vim
 augroup END
 
 
@@ -43,6 +44,8 @@ augroup END
     Plug 'mhinz/vim-startify'
     Plug 'StanAngeloff/php.vim'
     Plug 'stephpy/vim-php-cs-fixer'
+    Plug 'adoy/vim-php-refactoring-toolbox'
+    Plug 'tpope/vim-fugitive'
 
     "BEGIN NCM2 Autocomplete
         Plug 'ncm2/ncm2'
