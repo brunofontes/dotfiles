@@ -40,3 +40,8 @@ function dotMove()
     mv $1 "${dir}"
     ln -sf "${dir}/$1" "$1"
 }
+
+function diff()
+{
+    /bin/diff --color=always --side-by-side $* | less
+}
