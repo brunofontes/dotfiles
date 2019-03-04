@@ -23,7 +23,10 @@ PS1='[\u@\h \W]\$ '
 #Define VIM as default editor to GIT, instead of VI
 export GIT_EDITOR=vim
 
+# Bruno - keychain - enable and manage ssh-agent
 eval $(keychain --eval --quiet)
+export GPG_TTY=$(tty)
+export SSH_ASKPASS=ksshaskpass
 
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
 	exec startx
