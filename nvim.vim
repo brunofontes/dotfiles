@@ -45,7 +45,10 @@ augroup END
     Plug 'StanAngeloff/php.vim'
     Plug 'stephpy/vim-php-cs-fixer'
     Plug 'adoy/vim-php-refactoring-toolbox'
+
+    "GIT inside VIM
     Plug 'tpope/vim-fugitive'
+    Plug 'mhinz/vim-signify'
 
     "BEGIN NCM2 Autocomplete
         Plug 'ncm2/ncm2'
