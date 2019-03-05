@@ -134,6 +134,7 @@ augroup END
     inoremap <c-c> <ESC>
     noremap <silent> <expr> <CR> (pumvisible() ? ncm2_ultisnips#expand_or("\<CR>", 'n') : "\<CR>")
 
+
 "Ctags
     au BufWritePost *.php silent! !eval '[ -f ".git/hooks/ctags" ] && .git/hooks/ctags' &
 
@@ -152,8 +153,17 @@ augroup END
     " MUST HAVE Composer and php_cs_fixer installed GLOBALLY 
     " before installing the plugin
     let g:php_cs_fixer_php_path = "/usr/bin/php"
-    autocmd BufWritePost *.php silent! call PhpCsFixerFixFile()
+    let g:php_cs_fixer_rules = "@PSR2"
+    autocmd BufWritePost *.php silent! call php_cs_fixer#fix(@%, 0)
 
 "Neomake
 	" When writing a buffer (no delay), and on normal mode changes (after 750ms).
 	call neomake#configure#automake('nw', 750)
+
+"PhpActor
+    let g:phpactor_executable = '/usr/local/bin/phpactor'
+    let g:phpactorOmniError = v:true
+    " context-aware menu with all functions (ALT-m)
+    nnoremap <m-m> :call phpactor#ContextMenu()<cr>
+    nnoremap gd :call phpactor#GotoDefinition()<CR>
+    nnoremap gr :call phpactor#FindReferences()<CR>
