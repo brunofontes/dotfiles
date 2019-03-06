@@ -1,15 +1,3 @@
-dotdir=~/dotfiles
-
-source $dotdir/.alias
-source $dotdir/.functions
-thisPC=`hostname`
-if [ $thisPC = "inspiron-1525" ]
-then
-    source $dotdir/.only_laptop
-else
-    source $dotdir/.only_michelli
-fi
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -110,6 +98,20 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Read alias and functions
+dotdir=~/dotfiles
+source $dotdir/.alias
+source $dotdir/.functions
+
+# Load specific files for each PC
+thisPC=`hostname`
+if [ $thisPC = "inspiron-1525" ]
+then
+    source $dotdir/.only_laptop
+else
+    source $dotdir/.only_michelli
+fi
+
 
 #Enable menu select
 zstyle ':completion:*' menu select
@@ -122,8 +124,9 @@ fpath=(~/.zsh/completion $fpath)
 autoload -Uz compinit && compinit -i
 
 # Bruno - keychain - enable and manage ssh-agent
-eval $(keychain --eval --quiet)
-export SSH_ASKPASS=ksshaskpass
+eval `keychain --eval --agents ssh id_rsa --quiet`
+#eval $(keychain --eval --quiet)
+#export SSH_ASKPASS=ksshaskpass
 
 #GPG Key
 export GPG_TTY=$(tty)
@@ -131,6 +134,5 @@ export GPG_TTY=$(tty)
 #Bruno - Keep "LESS" content on screen when exit
 export LESS="-XFR"
 
-. /home/bruno/Apps/z/z.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
