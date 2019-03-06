@@ -3,3 +3,7 @@
 	name = Bruno Fontes
 [core]
 	editor = vim
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[commit]
+	verbose = true
