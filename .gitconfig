@@ -7,3 +7,5 @@
 	insteadOf = https://github.com/
 [commit]
 	verbose = true
+[init]
+	templatedir = ~/.git_template
