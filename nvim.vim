@@ -9,7 +9,7 @@
     nmap <C-L> A;<esc>
     imap <C-L> <esc>A;
     set number
-    set relativenumber
+    " set relativenumber
     colorscheme ron
     syntax on
 
@@ -34,7 +34,7 @@ augroup END
 "Plug - Install plugins easily with just a :PlugInstall command
     call plug#begin('~/.local/share/nvim/plugged')
 
-    Plug 'https://github.com/ludovicchabant/vim-gutentags'
+    " Plug 'https://github.com/ludovicchabant/vim-gutentags'
     Plug 'scrooloose/nerdtree'
     Plug 'bfredl/nvim-miniyank'
     Plug 'moll/vim-bbye'
@@ -90,6 +90,11 @@ augroup END
           \   <bang>0)
 
 
+    "FZF - Opening any file under the current dir with <C-p>
+        nmap <C-p> :FZF<CR>
+        let $FZF_DEFAULT_COMMAND='find . -path ./.git -prune -o -print'
+
+
     "Replace on multiple files
         "<leader>a  = Search
         "<leader>r  = Replace into the searched results
@@ -119,7 +124,7 @@ augroup END
         Plug 'tobyS/vmustache'
         Plug 'https://github.com/tobyS/pdv'
         " let g:pdv_template_dir= $HOME ."/.vim/
-        nnoremap <buffer> <C-p> :call pdv#DocumentWithSnip()<CR>
+        " nnoremap <buffer> <C-p> :call pdv#DocumentWithSnip()<CR>
 
     call plug#end()
 
@@ -167,3 +172,5 @@ augroup END
     nnoremap <m-m> :call phpactor#ContextMenu()<cr>
     nnoremap gd :call phpactor#GotoDefinition()<CR>
     nnoremap gr :call phpactor#FindReferences()<CR>
+
+
