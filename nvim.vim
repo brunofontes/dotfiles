@@ -9,7 +9,7 @@
     nmap <C-L> A;<esc>
     imap <C-L> <esc>A;
     set number
-    " set relativenumber
+    set norelativenumber
     colorscheme ron
     syntax on
 
@@ -92,7 +92,7 @@ augroup END
 
     "FZF - Opening any file under the current dir with <C-p>
         nmap <C-p> :FZF<CR>
-        let $FZF_DEFAULT_COMMAND='find . -path ./.git -prune -o -print'
+        let $FZF_DEFAULT_COMMAND='find . -path "./.git" -prune -o -path "./.vagrant" -prune -o -print'
 
 
     "Replace on multiple files
