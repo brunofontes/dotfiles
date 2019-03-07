@@ -7,15 +7,15 @@
 
 
 dotdir=~/dotfiles
-source $dotdir/.alias
-source $dotdir/.functions
+source $dotdir/alias
+source $dotdir/functions
 
 thisPC=`hostname`
 if [ $thisPC = "inspiron-1525" ]
 then
-    source $dotdir/.only_laptop
+    source $dotdir/only_laptop
 else
-    source $dotdir/.only_michelli
+    source $dotdir/only_michelli
 fi
 
 PS1='[\u@\h \W]\$ '

@@ -100,16 +100,16 @@ source $ZSH/oh-my-zsh.sh
 
 # Read alias and functions
 dotdir=~/dotfiles
-source $dotdir/.alias
-source $dotdir/.functions
+source $dotdir/alias
+source $dotdir/functions
 
 # Load specific files for each PC
 thisPC=`hostname`
 if [ $thisPC = "inspiron-1525" ]
 then
-    source $dotdir/.only_laptop
+    source $dotdir/only_laptop
 else
-    source $dotdir/.only_michelli
+    source $dotdir/only_michelli
 fi
 
 
@@ -125,8 +125,6 @@ autoload -Uz compinit && compinit -i
 
 # Bruno - keychain - enable and manage ssh-agent
 eval `keychain --eval --agents ssh id_rsa --quiet`
-#eval $(keychain --eval --quiet)
-#export SSH_ASKPASS=ksshaskpass
 
 #GPG Key
 export GPG_TTY=$(tty)
