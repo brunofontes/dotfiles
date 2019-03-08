@@ -6,6 +6,8 @@
     imap jk <Esc>
     map <C-b> :NERDTreeToggle<CR>
     map <C-A-s> :Startify<CR>
+    nmap <A-'> <C-w><C-w>
+    nmap <Tab> :b 
     nmap <C-L> A;<esc>
     imap <C-L> <esc>A;
     set number
