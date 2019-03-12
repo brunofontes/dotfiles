@@ -5,7 +5,10 @@
 "My personalizations
     imap jk <Esc>
     map <C-b> :NERDTreeToggle<CR>
+    map <C-g> :Gstatus<CR>
     map <C-A-s> :Startify<CR>
+    map <C-t> :tabnew<CR>:FZF<CR>
+    let g:startify_change_to_vcs_root = 1
     nmap <A-'> <C-w><C-w>
     nmap <Tab> :b 
     nmap <C-L> A;<esc>
