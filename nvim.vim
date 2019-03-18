@@ -98,7 +98,7 @@ augroup END
     "FZF - Opening any file under the current dir with <C-p>
         nmap <C-p> :FZF<CR>
         nmap <C-h> :History<CR>
-        let $FZF_DEFAULT_COMMAND='find . -path "./.git" -prune -o -path "./.vagrant" -prune -o -print'
+        let $FZF_DEFAULT_COMMAND='find . -path "./.git" -prune -o -path "./.vagrant" -prune -o -path "./node_modules" -prune -o -print'
 
 
 
