@@ -1,0 +1,8 @@
+if (ps -p $SSH_AGENT_PID > /dev/null)
+ then
+   echo
+ else
+   eval `ssh-agent -s`
+   echo
+   ssh-add
+ fi
