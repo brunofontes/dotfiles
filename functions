@@ -6,6 +6,8 @@ function mkcd () { mkdir -p "$1" && builtin cd -P -- "$1" }
 function sshadd() { ssh-add -l > /dev/null || eval ssh-add }
 function le { "$1" | less }
 function cd { echo; builtin cd "$1"; ls --color=tty; echo; echo PWD: "$PWD" }
+function cat { type bat && bat "$1" || command cat "$1" }
+function du { type ncdu && ncdu --color dark --exclude .git "$1" || command du }
 
 function gmerge()
 {
@@ -43,5 +45,5 @@ function dotMove()
 
 function diff()
 {
-    /bin/diff --color=always --side-by-side $* | less
+    command diff --color=always $* | less
 }
