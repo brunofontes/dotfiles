@@ -45,5 +45,5 @@ function dotMove()
 
 function diff()
 {
-    command diff --color=always $* | less
+    command diff --color=always --suppress-common-lines --suppress-blank-empty --strip-trailing-cr $* | less
 }
