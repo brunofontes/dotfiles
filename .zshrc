@@ -134,3 +134,4 @@ export LESS="-XFR"
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+#screenfetch
