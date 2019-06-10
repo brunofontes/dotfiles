@@ -33,3 +33,4 @@ if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+command cat ~/.log_error 2>/dev/null

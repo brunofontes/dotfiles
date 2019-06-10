@@ -135,3 +135,4 @@ export LESS="-XFR"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 #screenfetch
+command cat ~/.log_error 2>/dev/null
