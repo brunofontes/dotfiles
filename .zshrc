@@ -132,7 +132,14 @@ export GPG_TTY=$(tty)
 #Bruno - Keep "LESS" content on screen when exit
 export LESS="-XFR"
 
+#Avoid the exit command to be included on commands history
+export HISTIGNORE="&:[ ]*:exit"
 
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+    source /etc/profile.d/vte.sh
+fi
+
+#Should be the last command to be run
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 #screenfetch
 command cat ~/.log_error 2>/dev/null
