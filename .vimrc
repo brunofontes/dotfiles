@@ -1,6 +1,7 @@
 imap jk <Esc>
 nmap <C-L> A;<esc>
 imap <C-L> <esc>A;
+nnoremap <NL> i<CR><ESC>
 set number
 set relativenumber
 colorscheme ron

@@ -17,6 +17,7 @@
     set norelativenumber
     colorscheme ron
     syntax on
+    nnoremap <NL> i<CR><ESC>
 
 
 "Autoreload of config file
