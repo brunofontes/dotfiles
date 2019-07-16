@@ -87,7 +87,7 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
+export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -124,7 +124,7 @@ fpath=(~/.zsh/completion $fpath)
 autoload -Uz compinit && compinit -i
 
 # Bruno - keychain - enable and manage ssh-agent
-eval `keychain --eval --agents ssh id_rsa --quiet`
+# eval `keychain --eval --agents ssh id_rsa --quiet`
 
 #GPG Key
 export GPG_TTY=$(tty)
