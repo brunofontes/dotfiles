@@ -4,7 +4,6 @@ function vagrant () {
 
 function mkcd () { mkdir -p "$1" && builtin cd -P -- "$1" }
 function sshadd() { ssh-add -l > /dev/null || eval ssh-add }
-function le { "$1" | less }
 function cd { echo; builtin cd "$1"; ls --color=tty; echo; echo PWD: "$PWD" }
 function cat { type bat > /dev/null && bat "$*" || command cat "$*" }
 function du { type ncdu > /dev/null && ncdu --color dark --exclude .git "$*" || command du "$*" }
