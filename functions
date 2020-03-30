@@ -1,5 +1,17 @@
-function vagrant () {
-   builtin cd ~/development/laravelHomestead && /usr/bin/vagrant $*; builtin cd -
+# function vagrant () {
+#    builtin cd ~/development/laravelHomestead && /usr/bin/vagrant $*; builtin cd -
+# }
+
+function testDNS () {
+    dig @"$1" "$2" | grep "Query time:"
+}
+
+function testALLDNS () {
+    echo -n "PiHole"; testDNS 127.0.0.1 $1
+    echo -n "CloudFlare"; testDNS 1.1.1.1 $1
+    echo -n "Google"; testDNS 8.8.8.8 $1
+    echo -n "Quad9"; testDNS 9.9.9.9 $1
+    echo -n "Vivo"; testDNS 192.168.15.1 $1
 }
 
 function mkcd () { mkdir -p "$1" && builtin cd -P -- "$1" }

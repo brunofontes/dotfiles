@@ -6,7 +6,14 @@ alias gpull='sshadd; git pull origin $(git_current_branch)'
 alias gp='sshadd; git gc --auto; git push origin $(git_current_branch)'
 alias gpall='sshadd; git gc --auto; git push --all origin; git push --tags origin'
 alias glog='git log --graph --oneline --decorate -n 10 --color'
+
+function _update () {
+   COMPREPLY=($(pwd));
+};
+complete -F _update updateRepositories.sh
+# complete -W "aaa bbb www ccc" updateRepositories.sh
 alias update='bash ~/Apps/linuxShortcuts/Pacman/updateRepositories.sh'
+
 alias grep='grep --color=auto'
 alias ls='ls -h --color=always'
 alias la='ls -A --color=always'
@@ -19,3 +26,4 @@ alias restart='sudo systemctl restart'
 alias start='sudo systemctl start'
 alias stop='sudo systemctl stop'
 alias status='sudo systemctl status'
+alias speedtest='~/Apps/speedtest/speedtest'

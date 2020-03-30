@@ -64,7 +64,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git gitfast sudo docker composer gnu-utils gpg-agent homestead laravel ufw vagrant z
+  git gitfast sudo docker composer gnu-utils gpg-agent homestead laravel ufw vagrant
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -103,6 +103,7 @@ eval $(ssh-agent) > /dev/null
 dotdir=~/dotfiles
 source $dotdir/alias
 source $dotdir/functions
+source $dotdir/tizonia.sh
 
 # Load specific files for each PC
 thisPC=`hostname`
@@ -137,7 +138,23 @@ if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
     source /etc/profile.d/vte.sh
 fi
 
-#Should be the last command to be run
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 #screenfetch
 command cat ~/.log_error 2>/dev/null
+
+#Should be the last command to be run
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+#Fix z error message on Zsh plugin
+if [ "$_Z_NO_RESOLVE_SYMLINKS" ]; then
+    _z_precmd() {
+        (_z --add "${PWD:a}" &)
+		: $RANDOM
+    }
+else
+    _z_precmd() {
+        (_z --add "${PWD:A}" &)
+		: $RANDOM
+    }
+fi
+
+source /home/bruno/.config/broot/launcher/bash/br

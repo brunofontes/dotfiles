@@ -5,6 +5,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+export TERM=zsh
 
 dotdir=~/dotfiles
 source $dotdir/alias
@@ -34,3 +35,5 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 command cat ~/.log_error 2>/dev/null
+
+source /home/bruno/.config/broot/launcher/bash/br
