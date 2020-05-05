@@ -58,3 +58,10 @@ function diff()
 {
     command diff --color=always --suppress-common-lines --suppress-blank-empty --strip-trailing-cr $* | less
 }
+
+
+# Autocomplete Minecraft Server
+function _startMinecraftServer () {
+    COMPREPLY=($(ls -x --color=never *.properties | sed "s/server.properties//g" | sed "s/  / /g"));
+};
+complete -F _startMinecraftServer start-server-x.sh

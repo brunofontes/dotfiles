@@ -103,7 +103,6 @@ eval $(ssh-agent) > /dev/null
 dotdir=~/dotfiles
 source $dotdir/alias
 source $dotdir/functions
-source $dotdir/tizonia.sh
 
 # Load specific files for each PC
 thisPC=`hostname`
