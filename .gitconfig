@@ -1,11 +1,23 @@
 [user]
 	email = developer@brunofontes.net
 	name = Bruno Fontes
-[core]
-	editor = vim
+	signingkey = EE3447CE80048495
 [url "git@github.com:"]
-	insteadOf = https://github.com/
+    insteadOf = https://github.com/
+[push]
+	default = matching
 [commit]
+	gpgsign = true
 	verbose = true
+[gpg]
+	program = gpg
 [init]
 	templatedir = ~/.git_template
+[core]
+    editor = vim
+
+# ======== Including Delta (git/diff formatting) configuration ======
+    pager = delta --plus-color="#012800" --minus-color="#340001" --theme='TwoDark'
+[interactive]
+    diffFilter = delta --color-only
+# ======== Including Delta (git/diff formatting) configuration ======
