@@ -9,6 +9,12 @@ defscrollback 10000
 
 shelltitle 'bash'
 
+# mouse tracking allows to switch region focus by clicking
+mousetrack on
+
+#Enable scrollbar
+termcapinfo xterm* ti@:te@
+
 truecolor on
 
 # Customize the status line
