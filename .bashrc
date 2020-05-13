@@ -5,7 +5,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-export TERM=zsh
+export TERM=xterm-256color
 
 dotdir=~/dotfiles
 source $dotdir/alias

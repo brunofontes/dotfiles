@@ -1,6 +1,9 @@
 " NeoVim config file
 "
 " The original file path is: ~/.config/nvim/init.vim
+"
+
+set termguicolors
 
 "My personalizations
     imap jk <Esc>

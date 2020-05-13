@@ -17,9 +17,9 @@
     editor = vim
 
 # ======== Including Delta (git/diff formatting) configuration ======
-    pager = delta --dark --24-bit-color "never" --theme='zenburn'
-    #pager = delta --dark --plus-color="#012800" --minus-color="#340001" --theme='TwoDark'
-    #pager = delta --dark --theme='TwoDark'
+    #pager = delta --dark --24-bit-color "never" --theme='zenburn'
+    #pager = delta --dark --plus-color="#012800" --minus-color="#340001" --theme='Monokai Extended'
+    pager = delta --dark --theme='Monokai Extended'
 [interactive]
     diffFilter = delta --color-only
 # ======== Including Delta (git/diff formatting) configuration ======
