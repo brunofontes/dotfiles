@@ -65,7 +65,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git gitfast sudo docker composer gnu-utils gpg-agent homestead laravel ufw vagrant
+  git screen gitfast sudo docker gpg-agent homestead laravel ufw systemd vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -138,11 +138,15 @@ if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
     source /etc/profile.d/vte.sh
 fi
 
+# Enable vi mode on bash
+set -o vi
+
+# Directory shortcuts
+hash -d linux=$HOME/Apps/linuxShortcuts  # cd ~linux to open folder
+hash -d systemd=/etc/systemd/system
+
 #screenfetch
 command cat ~/.log_error 2>/dev/null
-
-#Should be the last command to be run
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 #Fix z error message on Zsh plugin
 if [ "$_Z_NO_RESOLVE_SYMLINKS" ]; then
@@ -158,3 +162,9 @@ else
 fi
 
 source /home/bruno/.config/broot/launcher/bash/br
+
+
+
+
+#Should be the last command to be run
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -36,4 +36,7 @@ fi
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 command cat ~/.log_error 2>/dev/null
 
+# Enable vi mode on bash
+set -o vi
+
 source /home/bruno/.config/broot/launcher/bash/br

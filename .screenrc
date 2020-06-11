@@ -20,7 +20,7 @@ term screen-256color
 truecolor on
 
 # Get rid of the vertical bars
-rendition so =00
+#rendition so =00
 # Get rid of the horizontal bars
 caption string "%{03} "
 
@@ -29,11 +29,11 @@ altscreen on
 
 # Customize the status line
 hardstatus alwayslastline
-#hardstatus string '%{= kG}[ %{G}%n*%f%t%?(%u)%? %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%S%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %H %{g}]'
-# hardstatus string '%{= kG}[ %{G}%S %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %H %{g}]'
-
 # [ screen name ] [  active windows ] [ machine name ]
  hardstatus string '%{= kG}[ %{B}%S %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %H %{g}]'
+
+#hardstatus string '%{= kG}[ %{G}%n*%f%t%?(%u)%? %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%S%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %H %{g}]'
+# hardstatus string '%{= kG}[ %{G}%S %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %H %{g}]'
 # hardstatus string '%{= kG}[ %S@%{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W}%c %{g}]'
 #hardstatus string '%{gk}[%{wk}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= w}%?%+Lw%?%? %{g}][%{d}%l%{g}][ %{= w}%Y/%m/%d %0C:%s%a%{g} ]%{W}'
 #hardstatus string '%{= mK}%-Lw%{= KW}%50>%n%f* %t%{= mK}%+Lw%< %{= kG}%-=%D %d %M %Y %c:%s%{-}'
@@ -44,48 +44,43 @@ bind s split
 
 # layouts
 layout autosave on
-layout new one
-select 1
-layout new two
-select 1
+layout new single
+layout new vertical
+split -v
+layout new horizontal
 split
 resize -v +8
 focus down
 select 4
 focus up
-layout new three
-select 1
+layout new horizontal3
 split
 resize -v +7
 focus down
-select 3
 split -v
 resize -h +10
 focus right
-select 4
 focus up
 
-layout attach one
-layout select one
+layout attach single
+layout select single
 
-# navigating regions with Ctrl-arrows
-bindkey "^[[1;5D" focus left
-bindkey "^[[1;5C" focus right
-bindkey "^[[1;5A" focus up
-bindkey "^[[1;5B" focus down
+# navigating regions with alt+hjkl
+bindkey "h" focus left
+bindkey "l" focus right
+bindkey "k" focus up
+bindkey "j" focus down
 
 # switch windows with F3 (prev) and F4 (next)
 bindkey "^[OR" prev
 bindkey "^[OS" next
 
 # switch layouts with Ctrl+F3 (prev layout) and Ctrl+F4 (next)
-bindkey "^[O1;5R" layout prev
-bindkey "^[O1;5S" layout next
-#bindkey "^[O1;5R" layout prev
-#bindkey "^[O1;5S" layout next
+bindkey "[1;5R" layout prev
+bindkey "[1;5S" layout next
 
 # F2 puts Screen into resize mode. Resize regions using hjkl keys.
-bindkey "^[OQ" eval "command -c rsz" # enter resize mode
+bindkey "OQ" eval "command -c rsz" # enter resize mode
 
 # use hjkl keys to resize regions
 bind -c rsz h eval "resize -h -5" "command -c rsz"

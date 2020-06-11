@@ -1,7 +1,3 @@
-# function vagrant () {
-#    builtin cd ~/development/laravelHomestead && /usr/bin/vagrant $*; builtin cd -
-# }
-
 function testDNS () {
     dig @"$1" "$2" | grep "Query time:"
 }
@@ -19,6 +15,11 @@ function sshadd() { ssh-add -l > /dev/null || eval ssh-add }
 function cd { echo; builtin cd "$1"; ls --color=tty; echo; echo PWD: "$PWD" }
 function cat { type bat > /dev/null && bat "$*" || command cat "$*" }
 function du { type ncdu > /dev/null && ncdu --color dark --exclude .git "$*" || command du "$*" }
+
+function myshell()
+{
+    ps -hp $$ | awk '{print $5}'
+}
 
 function gmerge()
 {
@@ -65,3 +66,9 @@ function _startMinecraftServer () {
     COMPREPLY=($(ls -x --color=never *.properties | sed "s/server.properties//g" | sed "s/  / /g"));
 };
 complete -F _startMinecraftServer start-server-x.sh
+
+# Create alias only if command exists / Only works on ZSH
+# _exists() { (( $+commands[$1] )) }
+# _exists bat  && alias cat='bat'
+# _exists ncdu && alias du='ncdu --color dark --exclude .git'
+

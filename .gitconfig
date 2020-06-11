@@ -2,6 +2,24 @@
 	email = developer@brunofontes.net
 	name = Bruno Fontes
 	signingkey = EE3447CE80048495
+[color]
+    all = true
+    ui = true
+    branch = auto
+    diff = auto
+    status = auto
+[color "branch"]
+    current = green
+    remote = red
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+[color "status"]
+    added = green
+    changed = red
+    untracked = yellow
 [url "git@github.com:"]
     insteadOf = https://github.com/
 [push]
@@ -20,6 +38,7 @@
     #pager = delta --dark --24-bit-color "never" --theme='zenburn'
     #pager = delta --dark --plus-color="#012800" --minus-color="#340001" --theme='Monokai Extended'
     pager = delta --dark --theme='Monokai Extended'
+
 [interactive]
     diffFilter = delta --color-only
 # ======== Including Delta (git/diff formatting) configuration ======
