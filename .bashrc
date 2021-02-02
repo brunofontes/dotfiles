@@ -25,9 +25,15 @@ PS1='[\u@\h \W]\$ '
 export GIT_EDITOR=vim
 
 # Bruno - keychain - enable and manage ssh-agent
-eval $(keychain --eval --quiet)
-export GPG_TTY=$(tty)
-export SSH_ASKPASS=ksshaskpass
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    rm -f ~/.ssh-socket
+    ssh-agent -a ~/.ssh-socket > "$XDG_RUNTIME_DIR/ssh-agent.env"
+fi
+if [[ ! "$SSH_AUTH_SOCK" ]]; then
+    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+fi
+#export GPG_TTY=$(tty)
+#export SSH_ASKPASS=ksshaskpass
 
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
 	exec startx

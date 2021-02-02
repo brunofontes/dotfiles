@@ -1,0 +1,12 @@
+.vscode
+/node_modules
+/vendor
+/.vscode
+/.vagrant
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+.env
+.fuse_*
+.php_cs.cache

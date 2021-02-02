@@ -3,24 +3,40 @@
 " The original file path is: ~/.config/nvim/init.vim
 "
 
-set termguicolors
+"set termguicolors
+
+
+" Enable use of local nvim configuration files
+" Just save a file in a folder named .nvimrc with
+" my custom configuration
+set exrc
+set secure
 
 "My personalizations
     imap jk <Esc>
+
+    "Hide search highlight with enter key
+    nnoremap <CR> :noh<CR><CR>
     map <C-b> :NERDTreeToggle<CR>
     map <C-g> :Gstatus<CR>
     map <C-A-s> :Startify<CR>
     map <C-t> :tabnew<CR>:FZF<CR>
     let g:startify_change_to_vcs_root = 1
-    nmap <A-'> <C-w><C-w>
+    "nmap <A-'> <C-w><C-w>
+    nmap <A-'> :bn<CR>
     nmap <Tab> :b 
     nmap <C-L> A;<esc>
     imap <C-L> <esc>A;
+    tnoremap jk <C-\><C-n>
+    nnoremap <NL> i<CR><ESC>
+
     set number
-    set norelativenumber
+    set relativenumber
+
     colorscheme ron
     syntax on
-    nnoremap <NL> i<CR><ESC>
+    " Set search highlight colors
+    hi Search		ctermbg=darkblue ctermfg=yellow cterm=none 
 
 
 "Autoreload of config file
@@ -43,7 +59,39 @@ augroup END
 "Plug - Install plugins easily with just a :PlugInstall command
     call plug#begin('~/.local/share/nvim/plugged')
 
-    " Plug 'https://github.com/ludovicchabant/vim-gutentags'
+" =====================================================================================
+                " Conquer of Completions - alternative to IntelliJ
+                
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+    " Use tab for trigger completion with characters ahead and navigate.
+    " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+    " other plugin before putting this into your config.
+    inoremap <silent><expr> <TAB>
+          \ pumvisible() ? "\<C-n>" :
+          \ <SID>check_back_space() ? "\<TAB>" :
+          \ coc#refresh()
+    inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+    function! s:check_back_space() abort
+      let col = col('.') - 1
+      return !col || getline('.')[col - 1]  =~# '\s'
+    endfunction
+
+    " Use <c-space> to trigger completion.
+    inoremap <silent><expr> <c-space> coc#refresh()
+
+    " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+    " position. Coc only does snippet and additional edit on confirm.
+    " <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+    if exists('*complete_info')
+      inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+    else
+      inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+    endif
+" =====================================================================================
+
+    Plug 'https://github.com/ludovicchabant/vim-gutentags'
     Plug 'scrooloose/nerdtree'
     Plug 'bfredl/nvim-miniyank'
     Plug 'moll/vim-bbye'
@@ -53,20 +101,12 @@ augroup END
     Plug 'StanAngeloff/php.vim', {'for': 'php'}
     Plug 'stephpy/vim-php-cs-fixer'
     Plug 'adoy/vim-php-refactoring-toolbox'
+    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
     "GIT inside VIM
     Plug 'tpope/vim-fugitive'
     Plug 'mhinz/vim-signify'
 
-    "NCM2 Autocomplete
-        Plug 'ncm2/ncm2'
-        Plug 'roxma/nvim-yarp'
-        Plug 'roxma/vim-hub-neovim-rpc'
-
-        Plug 'phpactor/phpactor', {'for': 'php', 'do': 'composer install'}
-        Plug 'phpactor/ncm2-phpactor'
-        Plug 'ncm2/ncm2-bufword'
-        Plug 'ncm2/ncm2-path'
     
     "Autocomplete even more
 
@@ -140,19 +180,9 @@ augroup END
     call plug#end()
 
 
-"NCM2
-    let g:python3_host_prog='/usr/bin/python3'
-    autocmd BufEnter * call ncm2#enable_for_buffer()
-    set completeopt=noinsert,menuone,noselect
-    inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-    set shortmess+=c
-    inoremap <c-c> <ESC>
-    noremap <silent> <expr> <CR> (pumvisible() ? ncm2_ultisnips#expand_or("\<CR>", 'n') : "\<CR>")
-
-
 "Ctags
     au BufWritePost *.php silent! !eval '[ -f ".git/hooks/ctags" ] && .git/hooks/ctags' &
+    set tags=./.git/tags;/
 
 
 "nvim-miniyank

@@ -1,3 +1,5 @@
+nmap <A-'> :bn<CR>
+nmap <Tab> :b 
 imap jk <Esc>
 nmap <C-L> A;<esc>
 imap <C-L> <esc>A;

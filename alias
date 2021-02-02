@@ -1,3 +1,6 @@
+# Reset sudo timeout every time you use sudo
+alias sudo='sudo -v; sudo '
+
 alias ga='git add'
 alias gch='git checkout'
 alias gc='git commit'
@@ -5,7 +8,11 @@ alias gs='git status'
 alias gpull='sshadd; git pull origin $(git_current_branch)'
 alias gp='sshadd; git gc --auto; git push origin $(git_current_branch)'
 alias gpall='sshadd; git gc --auto; git push --all origin; git push --tags origin'
-alias glog='git log --graph --oneline --decorate -n 10 --color'
+alias sc='sudo systemctl'
+alias sstart='sudo systemctl start'
+alias srestart='sudo systemctl restart'
+alias sstatus='sudo systemctl status'
+alias sstop='sudo systemctl stop'
 
 function _update () {
    COMPREPLY=($(pwd));
@@ -27,3 +34,7 @@ alias start='sudo systemctl start'
 alias stop='sudo systemctl stop'
 alias status='sudo systemctl status'
 alias speedtest='~/Apps/speedtest/speedtest'
+
+# Global aliases
+alias -g VV=' |& vim -'
+alias -g LL=' |& less'

@@ -8,6 +8,8 @@
 # Path to my personal npm file path
 export PATH=~/.npm-global/bin:$PATH
 
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib
+
 export TERM=xterm-256color
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -65,7 +67,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git screen gitfast sudo docker gpg-agent homestead laravel ufw systemd vi-mode
+  git gitfast sudo docker gpg-agent homestead laravel ufw
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -88,8 +90,21 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-#export SSH_KEY_PATH="~/.ssh/rsa_id"
-eval $(ssh-agent) > /dev/null
+export SSH_KEY_PATH="~/.ssh/rsa_id"
+#eval $(ssh-agent) > /dev/null
+#
+# Bruno - keychain - enable and manage ssh-agent
+#eval $(keychain --eval --quiet)
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    rm -f ~/.ssh-socket
+    ssh-agent -a ~/.ssh-socket > "$XDG_RUNTIME_DIR/ssh-agent.env"
+fi
+if [[ ! "$SSH_AUTH_SOCK" ]]; then
+    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+fi
+
+export SSH_ASKPASS="ksshaskpass"
+#export SSH_AUTH_SOCK=/run/user/1000/keyring/.ssh
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -126,7 +141,7 @@ fpath=(~/.zsh/completion $fpath)
 autoload -Uz compinit && compinit -i
 
 #GPG Key
-export GPG_TTY=$(tty)
+#export GPG_TTY=$(tty)
 
 #Bruno - Keep "LESS" content on screen when exit
 export LESS="-XFR"
@@ -139,7 +154,10 @@ if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
 fi
 
 # Enable vi mode on bash
-set -o vi
+# set -o vi
+# Remap CapsLock to Esc and Esc to CapsLock
+# [[ $(xmodmap -pke | grep Escape) = "keycode  66 = Escape NoSymbol Escape" ]] || ( /bin/xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape' && echo 'Caps changed to Escape' )
+# [[ $(xmodmap -pke | grep "Caps_Lock") = "keycode   9 = Caps_Lock NoSymbol Caps_Lock" ]] || ( /bin/xmodmap -e 'keycode 9 = Caps_Lock NoSymbol Caps_Lock' && echo 'Escape changed to Caps' )
 
 # Directory shortcuts
 hash -d linux=$HOME/Apps/linuxShortcuts  # cd ~linux to open folder
@@ -161,9 +179,8 @@ else
     }
 fi
 
-source /home/bruno/.config/broot/launcher/bash/br
-
-
+#Enable dep (deployer) autocomplete
+source ~/.deployer_completion
 
 
 #Should be the last command to be run
