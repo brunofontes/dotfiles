@@ -1,0 +1,136 @@
+! solarized theme
+! foreground/background
+! black
+URxvt.color0  : #000000
+URxvt.color8  : #555555
+! red
+URxvt.color1  : #AA0000
+URxvt.color9  : #FF5555
+! green
+URxvt.color2  : #00AA00
+URxvt.color10 : #55FF55
+! yellow
+URxvt.color3  : #AB4400
+URxvt.color11 : #FFFF44
+! blue
+URxvt.color4  : #0000AA
+URxvt.color12 : #5555FF
+! magenta
+URxvt.color5  : #AA00AA
+URxvt.color13 : #FF55FF
+! cyan
+URxvt.color6  : #00AAAA
+URxvt.color14 : #55FFFF
+! white
+URxvt.color7  : #AAAAAA
+URxvt.color15 : #FFFFFF
+
+URxvt*background: [85]#000000
+URxvt*depth: 32
+URxvt*foreground: #FFFFFF
+
+URxvt*scrollstyle: plain
+URxvt*scrollBar_right: True
+
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+! disable scroll back buffer when using less (secondary screen)
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+URxvt.secondaryWheel: 1
+
+URxvt*xterm: rxvt-unicode
+
+URxvt*font: xft:Cascadia Code:size=9,xft:Droid Sans Mono:regular:size=8
+URxvt*boldFont: xft:Cascadia Code:bold:size=9,xft:Droid Sans Mono:bold:size=8
+URxvt*italicFont: xft:Cascadia Code:italic:size=9,xft:Droid Sans Mono:italic:size=8
+
+!URxvt*letterSpace: -1
+
+URxvt.geometry: 92x24
+URxvt.saveline: 2048
+URxvt.urgentOnBell: true
+URxvt.iso14755: false
+
+URxvt.keysym.Control-Right: \033[1;5C
+URxvt.keysym.Control-Left: \033[1;5D
+
+!
+!======================= XTERM ========================
+!
+
+
+UXTerm*color0  : #000000
+UXTerm*color8  : #555555
+! red
+UXTerm*color1  : #AA0000
+UXTerm*color9  : #FF5555
+! green
+UXTerm*color2  : #00AA00
+UXTerm*color10 : #55FF55
+! yellow
+UXTerm*color3  : #AB4400
+UXTerm*color11 : #FFFF44
+! blue
+UXTerm*color4  : #0000AA
+UXTerm*color12 : #5555FF
+! magenta
+UXTerm*color5  : #AA00AA
+UXTerm*color13 : #FF55FF
+! cyan
+UXTerm*color6  : #00AAAA
+UXTerm*color14 : #55FFFF
+! white
+UXTerm*color7  : #AAAAAA
+UXTerm*color15 : #FFFFFF
+
+UXTerm*background: #000000
+UXTerm*foreground: #FFFFFF
+
+xterm*color0  : #000000
+xterm*color8  : #555555
+! red
+xterm*color1  : #AA0000
+xterm*color9  : #FF5555
+! green
+xterm*color2  : #00AA00
+xterm*color10 : #55FF55
+! yellow
+xterm*color3  : #AB4400
+xterm*color11 : #FFFF44
+! blue
+xterm*color4  : #0000AA
+xterm*color12 : #5555FF
+! magenta
+xterm*color5  : #AA00AA
+xterm*color13 : #FF55FF
+! cyan
+xterm*color6  : #00AAAA
+xterm*color14 : #55FFFF
+! white
+xterm*color7  : #AAAAAA
+xterm*color15 : #FFFFFF
+
+xterm*background: #000000
+xterm*foreground: #FFFFFF
+
+
+UXTerm*xterm: uxterm-256color
+UXTerm*locale: true
+!UXTerm*renderFont: true
+!UXTerm.vt100.renderFont: default
+!UXTerm*font: -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso8859-?
+xterm*faceName: Cascadia Code
+xterm*faceSize: 9
+xterm*renderFont: true
+UXTerm*fontFace: Cascadia Code
+UXTerm*faceSize: 9
+UXTerm*renderFont: true
+
+!UXTerm.vt100.geometry: 105x30
+UXTerm*bellIsUrgent: true
+!UXTerm*.scaleHeight: 1.01
