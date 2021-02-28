@@ -92,6 +92,8 @@ source $ZSH/oh-my-zsh.sh
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 #eval $(ssh-agent) > /dev/null
+export SSH_AUTH_SOCK=/home/bruno/.ssh-socket
+export SSH_AUTH_SOCK
 #
 # Bruno - keychain - enable and manage ssh-agent
 #eval $(keychain --eval --quiet)
