@@ -182,6 +182,10 @@ fi
 #Enable dep (deployer) autocomplete
 source ~/.deployer_completion
 
+if [ "$XTERM_VERSION" -a -z "$TMUX" ];
+then
+    tmux new -t UXTerm_`date +%Hh%Mm`
+fi
 
 #Should be the last command to be run
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
