@@ -118,6 +118,8 @@ xterm*color15 : #EEEEEC
 xterm*background: #000000
 xterm*foreground: #FFFFFF
 
+UXTerm.vt100.metaSendsEscape: true
+
 
 UXTerm*xterm: uxterm-256color
 UXTerm*locale: true
