@@ -1,0 +1,12 @@
+#!/bin/sh
+set -e
+PATH="/usr/local/bin:$PATH"
+dir="`git rev-parse --git-dir`"
+trap 'rm -f "$dir/$$.tags"' EXIT
+
+#To PHP only, use this line bellow instead of the "git ls-files (...) --languages=-javascript,sql,php...
+#ctags --tag-relative -R -f "$dir/$$.tags" --fields=+aimlS --languages=php --PHP-kinds=+cf-va
+git ls-files | \
+  ctags --tag-relative -L - -f"$dir/$$.tags" --languages=-javascript,sql,php
+
+mv "$dir/$$.tags" "$dir/tags"

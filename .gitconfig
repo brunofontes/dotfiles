@@ -27,13 +27,15 @@
 [commit]
 	gpgsign = true
 	verbose = true
+	template = /home/bruno/dotfiles/.git_template/commit.template
 [gpg]
 	program = gpg
 [init]
-	templatedir = ~/.git_template
+	templatedir = /home/bruno/dotfiles/.git_template
+	defaultBranch = master
 [core]
     editor = vim
-    excludesfile = ~/dotfiles/.gitignore_global
+    excludesfile = /home/bruno/dotfiles/.gitignore_global
 
 # ======== Including Delta (git/diff formatting) configuration ======
     #pager = delta --dark --24-bit-color "never" --theme='zenburn'
