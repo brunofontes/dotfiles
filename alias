@@ -14,6 +14,11 @@ alias srestart='sudo systemctl restart'
 alias sstatus='sudo systemctl status'
 alias sstop='sudo systemctl stop'
 
+alias dcu='docker-compose up'
+alias dcd='docker-compose down'
+alias dce='docker-compose exec'
+alias dcb='docker-compose build'
+
 function _update () {
    COMPREPLY=($(pwd));
 };
